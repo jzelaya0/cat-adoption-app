@@ -7,7 +7,7 @@
 		function KittiesController() {
 			var self = this;
 
-			self.kitties.list =
+			self.kittiesList =
 			[
 					{
 						catName: 'Karl',
