@@ -12,15 +12,32 @@
 
 	<body>
 		<div id="container" ng-controller="KittiesController as Kitties">
+			<h1>Kitty Adoption</h1>
 			<div class="left-container">
-				<h1>Kitties for Adoption</h1>
-					<div class="dashed" ng-repeat="k in Kitties.kittiesList" >
+				<h2>Kitties for Adoption</h2>
+					<div class="dashed" ng-repeat="k in Kitties.kittiesList | filter:false" >
 						<h2>My Name is {{k.catName}}</h2>
-						<img src="{{k.image}}"/>
+						<img ng-src="{{k.image}}"/>
 						<p>I am months {{k.monthsOld}} old</p>
 						<p>I am a {{k.gender}}</p>
-						<input type="checkbox" name="name" value="{{k.adopted}}">
-							
+						<p>
+							Adopt Me?
+							<input type="checkbox" ng-model="k.adopted">
+						</p>
+					</div>
+			</div>
+
+			<div class="right-container">
+				<h2>Adopted Kitties</h2>
+					<div class="dashed" ng-repeat="k in Kitties.kittiesList | filter:true" >
+						<h2>My Name is {{k.catName}}</h2>
+						<img ng-src="{{k.image}}"/>
+						<p>I am months {{k.monthsOld}} old</p>
+						<p>I am a {{k.gender}}</p>
+						<p>
+							Abandon Me :(
+							<input type="checkbox" ng-model="k.adopted">
+						</p>
 					</div>
 			</div>
 		</div>
